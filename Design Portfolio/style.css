@@ -1,0 +1,232 @@
+:root{
+    --primary: #5DA9E9;
+    --bg: #000000;
+    --secondary: #ffffff;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    background-color: var(--bg);
+    color: var(--secondary);
+}
+nav{
+    display: flex;
+    padding: 2rem;
+}
+header nav img{
+   margin: 0rem 3rem 0rem 8rem;
+}
+header nav div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+header nav div a{
+    font-size: large;
+    color: inherit;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-right: 30px;
+}
+header nav div a:hover{
+    color: var(--primary);
+    transition: 0.25s all ease ;
+}
+.hero{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+.hero img{
+    height: auto;
+    width: 30rem;
+    border-radius: 3rem;
+    width: 400px;
+    border-radius: 5rem;
+    margin-left: 10rem;
+    /* justify-content: center;  */
+}
+
+.hero .right{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin: 0 auto;
+    
+}
+
+.hero div h4{
+    color: var(--primary);
+    font-size: 25px;
+    line-height: 3;
+}
+.hero div h1{
+    font-size: 4rem;
+    font-weight: 100;
+    line-height: 1.25;
+    margin-bottom: 2rem;
+}
+.hero div span{
+    color: var(--primary);
+}
+
+.hero div p {
+    line-height: 2;
+    margin-bottom: 2rem;
+}
+
+.bttn{
+    padding: 0.5rem 2rem;
+    color: var(--primary);
+    background-color: var(--bg);
+    border: 2px solid var(--primary);
+    border-radius: 3rem;
+    transition: all 0.25s ease;
+    font-size: 1rem;
+}
+.bttn:hover{
+   background-color: var(--primary); 
+   color: var(--secondary);
+   cursor: pointer;
+    padding: 0.75rem 2.25rem;
+}
+
+section .about-me{
+    display: flex;
+    /* justify-content: space-between; */
+    /* margin:  0 auto; */
+    align-items: center;
+    padding: 7rem;
+
+}
+section .right{
+   margin-left: 10rem; 
+}
+.about h2{
+    margin-bottom: 1rem;
+    font-size: 1.75rem;
+}
+.about h2 span{
+    color: var(--primary);
+}
+.about h3{
+    margin-bottom: 1rem;
+}
+.about p{
+    margin-bottom: 2rem;
+    line-height: 2rem;
+}
+.about-social{
+    display: flex;
+}
+.about-social a{
+    margin-right: 2rem;
+}
+.projects{
+    background-color: var(--bg);
+    padding: 6rem;
+}
+
+.blue{
+    color: var(--primary);
+}
+.t-center{
+    text-align: center;
+}
+.white{
+    color: #ffffff;
+}
+.projects>h2{
+    margin-bottom: 1rem;
+}
+.projects>p{
+    margin-bottom: 5rem;
+}
+.card{
+    display: flex;
+    /* margin: 0 auto; */
+    justify-content: space-evenly;
+}
+.card div{
+    background-color: white;
+    margin: 0 1rem;
+    position: relative;
+    padding: 3rem 2rem;
+    
+}
+.card div img{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: -1.5rem;
+    background-color: var(--secondary);
+}
+.card div p{
+    text-align: center;
+    line-height: 1.5;
+}
+
+.card div .head{
+    font-size: 600;
+    margin-bottom: 0.5rem;
+}
+.getintouch{
+    padding: 6rem;
+    display: flex;
+    justify-content: center;
+}
+.getintouch-form{
+    max-width: 1000px;
+    width:100%;
+}
+.getintouch h2{
+    font-size: 2.5rem;
+    font-weight: 100;
+    /* margin-top: 6rem; */
+    margin-bottom: 2rem;
+}
+form{
+    display: flex;
+    flex-direction: column;
+}
+form label{
+    color: var(--primary);
+    font-size: 1.25rem;
+}
+form input{
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    padding: .5rem;
+    outline: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(204, 204, 204);
+}
+form textarea{
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    padding: .5rem;
+    outline: none;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(204, 204, 204);
+}
+
+form button{
+    background-color: var(--primary);
+    color: white;
+    padding: .5rem;
+    font-size: 1rem;
+    border: #ffffff;
+}
+
+input:focus, textarea:focus{
+    outline: none;
+}
