@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- Please NOTE that the link to assets (like images) need to be set in global context.
+For example:
+To access an image from assets folder correct way to set src attribute is 
+
+src = 'profile.png'
+
+instead of 
+
+src = './assets/profile.png'
+-->
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ticket Management App</title>
+
+    <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+    <!-- TOOL BOX ELEMENTS -->
+    <div class="toolbox-cont">
+        <div class="toolbox-priority-cont">
+            <div class="lightpink color"></div>
+            <div class="lightgreen color"></div>
+            <div class="lightblue color"></div>
+            <div class="black color"></div>
+        </div>
+
+
+    </div>
+
+    <!-- MAIN CONTAINER - Tickets holder -->
+    <div class="main-cont">
+        <!-- <div class="ticket-cont">
+            <div class="ticket-color"></div>
+            <div class="ticket-id">id 1</div>
+            <div class="task-area"> this  is task 1</div>
+            <div class="ticket-lock">
+              <i class="fa-solid fa-lock"></i>
+           </div> -->
+    </div>
+    </div>
+
+    <!-- MODAL - Ticket generator window -->
+    <div class="modal-cont">
+
+        <textarea class="textArea-cont" placeholder="Enter Your Task" spellcheck="false">
+
+       </textarea>
+
+
+        <div class="priority-colors-container">
+            <div class="lightpink priority-color"></div>
+            <div class="lightgreen priority-color"></div>
+            <div class="lightblue priority-color"></div>
+            <div class="black priority-color active"></div>
+        </div>
+
+    </div>
+
+    <!-- <script src="script.js"></script> -->
+
+    <script>
+       const ticketsArr = [
+  {
+    ticketTask: "This is task 1 (lightgreen)",
+    ticketColor: "lightgreen",
+    ticketID: "dGSUFjfiq",
+  },
+  {
+    ticketTask: "This is task 2 (black)",
+    ticketColor: "black",
+    ticketID: "ay8dQS0o1",
+  },
+  {
+    ticketTask: "This is task 3 (lightblue)",
+    ticketColor: "lightblue",
+    ticketID: "fOqBFgQtx",
+  },
+  {
+    ticketTask: "This is task 4 (lightpink)",
+    ticketColor: "lightpink",
+    ticketID: "fOqBFgQtx",
+  },
+];
+
+// CALLING createTicket() function for each value in ticketsArr
+ticketsArr.forEach(function (ticket) {
+  createTicket(ticket.ticketTask, ticket.ticketColor, ticket.ticketID);
+});
+
+function createTicket(ticketTask, ticketColor, ticketID) {
+  const id = ticketID || shortid();
+  const ticketCont = document.createElement("div");
+  ticketCont.setAttribute("class", "ticket-cont");
+
+  ticketCont.innerHTML = `<div class="ticket-color ${ticketColor}"></div>
+       <div class="ticket-id">#${id}</div>
+       <div class="task-area">${ticketTask}</div>
+       <div class="ticket-lock">
+         <i class="fa-solid fa-lock"></i>
+      </div>`;
+
+  const mainCont = document.querySelector(".main-cont");
+  mainCont.appendChild(ticketCont);
+
+  if (!ticketID) {
+    ticketsArr.push({ ticketTask, ticketColor, ticketID: id });
+    localStorage.setItem("tickets", JSON.stringify(ticketsArr));
+  }
+
+  console.log(ticketsArr);
+}
+
+function addTicketsToDocument(filteredTickets) {
+    console.log("Filtered Tickets Count:", filteredTickets.length);
+    const mainTaskContainer = document.querySelector('.main-cont');
+    console.log("mainTaskContainer will get removed");
+    mainTaskContainer.innerHTML = ''; // Clear existing tickets
+
+    filteredTickets.forEach(ticket => {
+        const ticketCont = document.createElement('div');
+        ticketCont.classList.add('ticket-cont');
+        
+        ticketCont.innerHTML = `
+            <div class="ticket-color ${ticket.ticketColor}"></div>
+            <div class="ticket-id">#${ticket.ticketID}</div>
+            <div class="task-area">${ticket.ticketTask}</div>
+            <div class="ticket-lock">
+                <i class="fa-solid fa-lock"></i>
+            </div>`;
+        
+        mainTaskContainer.appendChild(ticketCont);
+    });
+}
+
+function handleColorClick(e) {
+    //console.log("Clicked Color:", color);
+    console.log("handlecolor clicked");
+    const clickedColor = event.target.classList[0];
+  const filteredTickets = ticketsArr.filter(ticket => ticket.ticketColor === clickedColor);
+  
+console.log("Filtered Tickets:", filteredTickets);
+  addTicketsToDocument(filteredTickets);
+}
+
+function handleColorDoubleClick() {
+  addTicketsToDocument(ticketsArr);
+}
+
+const colors = document.querySelectorAll('.color');
+
+colors.forEach(color => {
+  color.addEventListener('click', function() {
+    console.log('t clicked');
+   
+    handleColorClick();
+  });
+
+  color.addEventListener('dblclick', function() {
+    console.log('db clicked');
+    handleColorDoubleClick();
+  });
+});
+
+      
+    </script>
+
+
+
+</body>
+
+</html>

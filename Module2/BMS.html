@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book My Show</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        h1{
+            text-transform: capitalize;
+            text-align: center;
+        }
+        select{
+            text-align: center;
+            margin: 20px auto;
+        }
+        .dd{
+            display: flex;            
+        }
+        .card{
+            height: 150px;
+            width: 150px;
+            background-color: orangered;
+            color: white;
+            border: solid black;
+            text-align: center;
+        }
+        h2{
+            background-color: brown;
+            padding: 8px;
+        }
+        p{
+            margin-top: 30px;
+            font-size: 1.4rem;
+        }
+        .movies{
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .card{
+            margin: 20px;
+        }
+        
+    </style>
+</head>
+<body>    
+    <h1>Book My Show</h1>
+    <div class="dd">
+        <select>
+            <option>none</option>
+            <option>action</option>
+            <option>romance</option>
+            <option>comedy</option>
+        </select>
+    </div>
+    <div class="movies">
+        <div class="card">
+            <h2>Action-1</h2>
+            <p data-category="action">Rs 100</p>
+        </div>
+        <div class="card">
+            <h2>Action-2</h2>
+            <p data-category="action">Rs 200</p>
+        </div>
+        <div class="card">
+            <h2>Action-3</h2>
+            <p data-category="action">Rs 100</p>
+        </div>
+        <div class="card">
+            <h2>Romance-1</h2>
+            <p data-category="romance">Rs 300</p>
+        </div>
+        <div class="card">
+            <h2>Romance-2</h2>
+            <p data-category="romance">Rs 250</p>
+        </div>
+        <div class="card">
+            <h2>Romance-3</h2>
+            <p data-category="romance">Rs 150</p>
+        </div>
+        <div class="card">
+            <h2>Comedy-1</h2>
+            <p data-category="comedy">Rs 100</p>
+        </div>
+        <div class="card">
+            <h2>Comedy-2</h2>
+            <p data-category="comedy">Rs 200</p>
+        </div>
+        <div class="card">
+            <h2>Comedy-3</h2>
+            <p data-category="comedy">Rs 100</p>
+        </div>
+    </div>
+    <script>
+        var filter = document.querySelector('select');
+        filter.addEventListener('change',function(e){
+            var selectedCategory = e.target.value;
+            var allP = document.querySelectorAll('p');
+            for(let i = 0; i<allP.length;i++){
+                var category = allP[i].getAttribute('data-category');
+                var card = allP[i].parentElement;
+                console.log(card);
+                if(selectedCategory=="none" | category==selectedCategory){
+                    card.style.display = 'block';
+                }
+                else{
+                    card.style.display = 'none'
+                }
+                
+            }
+        })
+
+        
+    </script>
+</body>
+</html>

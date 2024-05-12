@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debouncing</title>
+</head>
+<body>
+    <input type="text" placeholder="normal" class="normal">
+    <input type="text" placeholder="debouncer" class="debouncer">
+    <input type="text" placeholder="throttling" class="throttling">
+
+    <script>
+        let count = 1;
+        let inpNormal = document.querySelector('.normal');
+        let inpDebouncer = document.querySelector('.debouncer');
+        let inpThrottling = document.querySelector('.throttling');
+        let timer;
+        let throttle = true;
+
+
+        inpNormal.addEventListener('keydown', function(){
+            cb();
+        })
+
+        inpDebouncer.addEventListener('keydown', function(){
+            debounce(cb, 500);
+        })
+        
+        inpThrottling.addEventListener('keydown', function(){
+            throttling(cb, 1000);
+        })
+        
+        
+        function cb(){
+            console.log('call',count);
+            count++;
+        }
+
+        function debounce(fx, delay){
+            clearTimeout(timer);
+            timer = setTimeout(fx, delay);
+        }
+
+        function throttling(fx, delay){
+            if(throttle){
+                fx();
+                throttle = false;
+                timer = setTimeout(function(){
+                throttle = true;
+                }, delay);
+            }  
+        }
+    </script>
+</body>
+</html>

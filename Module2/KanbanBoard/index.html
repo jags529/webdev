@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanban Board</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="nav-top">
+
+    </div>
+    <div class="aside">
+        <i class="fa-solid fa-chess-board"></i>
+        <h4>Board</h4>
+    </div>
+    <div class="main">
+        <div class="main-top">
+            <div class="filter">
+                <div class="color-cont red"></div>
+                <div class="color-cont blue"></div>
+                <div class="color-cont orange"></div>
+                <div class="color-cont green"></div>
+            </div>
+            <div class="add-delete">
+                <i class="fa-solid fa-plus"></i>
+                <i class="fa-solid fa-trash"></i>
+            </div>
+        </div>
+        <div class="main-body">
+            <!-- <div class="card">
+                <div class="card-top red">
+
+                </div>
+                <div class="card-id">
+                    7567
+                </div>
+                <div class="card-body">
+                    This is the task
+                </div>
+                <div class="lock-unlock">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+            </div> -->
+            <div class="modal">
+                <div class="left-modal">
+                    <textarea placeholder="Write your task here"></textarea>
+                </div>
+                <div class="right-modal">
+                    <div class="modal-color-cont red outline"></div>
+                    <div class="modal-color-cont blue"></div>
+                    <div class="modal-color-cont orange"></div>
+                    <div class="modal-color-cont green "></div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    <button>run</button>;
+    <script src="./script.js"></script>
+</body>
+</html>

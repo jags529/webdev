@@ -1,0 +1,140 @@
+<!-- try with async and await instead of then and catch-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Forecast</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            font-family: "Roboto", sans-serif;
+        }
+        .wrapper{
+            display: grid;
+            grid-template-rows: 80% 20%;
+            height: 100vh;
+        }
+        .top{
+            display: flex;
+            background-color: #BBE2EC;
+            align-items:center;
+            justify-content: center;
+        }
+        .top-container{
+            display: flex;
+            align-items:center;
+            justify-content: center;
+        }
+        .left{
+            margin: 1rem;
+        }
+        .center{
+            margin: 1rem;
+        }
+        .right{
+            margin: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .bottom{
+            background-color:#FFF3CF;
+            display: flex;
+            align-items:center;
+            justify-content: center;
+        }
+        input{
+            border: none;
+            border-bottom: 1px solid;
+            background-color: #FFF3CF;
+            padding: 1rem;
+            font-size: medium;
+            width: 20rem;
+            outline: none;
+        }
+        button{
+            padding: 1rem;
+            font-size: medium;
+            margin-left: 1rem;
+            background-color: #FFCD00;
+            border: none;
+            border-radius: .5rem;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <section class="top">
+            <div class="top-container">
+                <div class="left">
+                    <h4><sup>&deg;</sup> C</h4>
+                </div>
+                <div class="center">
+                    <h2>Location</h2>
+                    <span class="date">Random Time & Date</span>
+                </div>
+                <div class="right">
+                    <img>
+                    <p>Condition</p>
+                </div>
+            </div>
+        </section>
+        <section class="bottom">
+            <div class="bottom-container">
+                <input type="text" placeholder="Search_location">
+                <button>Search</button>
+            </div>
+        </section>
+    </div>
+    
+    <script>
+        let temp = document.querySelector('h4');
+        let loc = document.querySelector('h2');
+        let date = document.querySelector('.date');
+        let time = document.querySelector('.time');
+        let condition = document.querySelector('p');
+        let btn = document.querySelector('button');
+        let icon = document.querySelector('img');
+        btn.addEventListener('click', function(e){
+            e.preventDefault();
+            let location = e.target.previousElementSibling.value;
+            console.log(location);
+            
+            // URL of the API endpoint you want to call
+            const apiUrl = 'http://api.weatherapi.com/v1/current.json?key=775b3b34982f4735a77161645242904&q='+location+'&aqi=no';
+            console.log(apiUrl);
+
+            // Making the actual fetch request
+            fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                throw new Error('Network response was not ok');
+                }
+                // Parse the response as JSON
+                return response.json();
+            })
+            .then(data => {
+                // Do something with the data received from the API
+                console.log(data);
+                temp.innerText = data.current.temp_c + '\u00B0' + 'C';
+                loc.innerText = data.location.name;
+                date.innerText = data.current.last_updated;
+                condition.innerText = data.current.condition.text;
+                let imgUrl = data.current.condition.icon;
+                icon.setAttribute("src",imgUrl);
+                console.log(icon);
+
+
+            })
+            .catch(error => {
+                // Handle any errors that occurred during the fetch
+                console.error('There was a problem with the fetch operation:', error);
+            });
+        })
+
+    </script>
+</body>
+</html>

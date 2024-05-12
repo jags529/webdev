@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            position: relative;
+            background-color: black;
+            height: 100vh;
+            width: auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+        }
+        .box{
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        h1{
+            color: white;
+            font-size: 3rem;
+            margin-right: 1rem;
+        }
+        .block{
+            height: 200px;
+            width: 40%;
+            background-color: black;
+            animation-name: move1;
+            animation-iteration-count: infinite;
+            animation-duration: 3s;
+            animation-timing-function: linear;
+            
+        }
+        @keyframes move1 {
+            
+            50%{
+                transform: translateX(-100%);
+            }
+            
+            
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>I AM A FRONT END DEVELOPER</h1>
+            <div class="block"> 
+                
+            </div>
+        </div>
+    </div>
+</body>
+</html>

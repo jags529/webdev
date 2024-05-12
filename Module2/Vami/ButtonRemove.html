@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="all">Remove All</button>
+    <ul>
+        <li>
+            <p>Task - 1</p>
+            <button>delete</button>
+        </li>
+        <li>
+            <p>Task - 2</p>
+            <button>delete</button>
+        </li>
+        <li>
+            <p>Task - 3</p>
+            <button>delete</button>
+        </li>
+        <li>
+            <p>Task - 4</p>
+            <button>delete</button>
+        </li>
+    </ul>
+
+   
+
+    <script>
+        const bttn = document.querySelector("#all");
+
+
+        const ulAll = document.querySelectorAll('ul');
+
+        const bttnAll = document.querySelectorAll("button");
+
+       //const liAll = document.querySelectorAll("li");
+
+        bttn.addEventListener('click', function(){
+          for(let i=0; i< ulAll.length; i++){
+            ulAll[i].style.display='none';
+          }
+        });
+
+       
+        for(let i=0; i<bttnAll.length; i++){
+                const bttn = bttnAll[i];
+                bttn.addEventListener('click', function(){
+                    bttn.parentElement.style.display='none';
+                })
+        }
+        
+    </script>
+    <script src="hoisting.js"></script>
+</body>
+
+</html>

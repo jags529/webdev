@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StarRating</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .main-cont{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        h1{
+            font-size: 3rem;
+        }
+        .fa{
+            font-size: 2rem;
+        }
+        h2{
+            font-size: 2rem;
+        }
+        .active{
+            color: goldenrod;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-cont">
+        <h1>Star Component</h1>
+        <div class="star-cont">
+            <span class="fa fa-star" data-pos="1"></span>
+            <span class="fa fa-star" data-pos="2"></span>
+            <span class="fa fa-star" data-pos="3"></span>
+            <span class="fa fa-star" data-pos="4"></span>
+            <span class="fa fa-star" data-pos="5"></span>
+        </div>
+        <h2>Rating: <span></span></h2>
+    </div>
+    <script>
+        let starCont = document.querySelector('.star-cont');
+        let star = document.querySelectorAll('.fa-star');
+        let rating = document.querySelector('h2 span');
+
+
+        starCont.addEventListener('click', function(e){
+            if(e.target.classList.contains('fa-star')){
+                let clickedStar = e.target.dataset.pos;
+                unmarkAll();
+                mark(clickedStar);
+                rating.innerText = clickedStar;
+            }
+            
+        })
+
+        starCont.addEventListener('mouseover', function(e){
+            if(e.target.classList.contains('fa-star')){
+                let hoveredStar = e.target.dataset.pos;
+                unmarkAll();
+                mark(hoveredStar);
+                
+            }
+            
+        })
+        starCont.addEventListener('mouseout', function(e){
+            unmarkAll();
+            mark(Number(rating.innerText));
+        })
+
+        
+
+        // functions
+        function mark(n){
+            for(let i = 0; i<n; i++){
+                star[i].classList.add('active')
+            }
+        }
+
+        function unmarkAll(){
+            for(let i = 0; i<star.length; i++){
+                star[i].classList.remove('active');
+            }
+        }
+    </script>    
+</body>
+</html>

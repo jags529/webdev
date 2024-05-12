@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+    </ul>
+
+</body>
+
+<script>
+    // Write your JS program here 
+    // select all li to get numbers
+
+//   let li = document.querySelectorAll('li');
+
+//let allLi = li[5];
+
+//create new li element
+//let liNew = document.createElement('li');
+
+// innerText
+//liNew.innerText = "7";
+
+
+// parent element of li
+//let parentElement = document.querySelector('ul');
+
+//insert at particular index
+//parentElement.insertBefore(liNew, parentElement.children[6]);
+
+var allLi = document.querySelectorAll('li');
+console.log(allLi);
+for(var i=1; i<allLi.length; i++){
+    const prev = parseInt(allLi[i-1].innerText);
+    const current = parseInt(allLi[i].innerText);
+    console.log(prev);
+    if(current!== prev+1){
+        var mis = document.createElement('li');
+        mis.innerText = prev+1;
+        var ul = document.querySelector('ul');
+        ul.insertBefore(mis, allLi[i]);
+    }
+    
+}
+
+
+</script>
+
+</html>

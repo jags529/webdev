@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        body{
+            font-size: 1rem;
+            margin-left: 1.5rem;
+        }
+        label{
+            font-size: 2rem;
+        }
+        .btn-container{
+            margin-top: 1rem;
+        }
+        .plus-btn, .minus-btn, .reset-btn {
+            font-size: 1.5rem;
+            margin: .5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Counter</h1>
+    <h2>0</h2>
+    <label>
+        Increment/Decrement by: 
+        <input type="number">
+    </label>
+    <div class="btn-container">
+        <button class="plus-btn">+</button>
+        <button class="minus-btn">-</button>
+        <button class="reset-btn">reset</button>
+    </div>
+    <script>
+        let btnCont = document.querySelector('.btn-container');
+        let inp = document.querySelector('input');
+        let counter = document.querySelector('h2');
+        let multiple = 1;
+        let count = 0;
+        inp.addEventListener('change', function(e){
+            if(e.target.value<0){
+                alert('Please enter a positive value');
+                e.target.value = "";
+            }
+            else{
+                multiple = Number(e.target.value);
+            }
+        })
+        btnCont.addEventListener('click', function(e){
+
+            if(e.target.classList.contains('plus-btn')){
+                count+= multiple;
+                counter.innerText = count;
+            }
+            else if(e.target.classList.contains('minus-btn')){
+                if(count == 0){
+                    return;
+                }
+                count-= multiple;
+                counter.innerText = count;
+            }
+            else if(e.target.classList.contains('reset-btn')){
+                counter.innerText = 0;
+            }
+        })
+    </script>
+</body>
+</html>

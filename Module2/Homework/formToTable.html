@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      tr,
+      table,
+      td,
+      th {
+        border: 1px solid;
+        border-collapse: collapse;
+      }
+
+      td,
+      th {
+        padding: 1.5rem;
+      }
+
+      table {
+        margin: auto;
+        margin-top: 5rem;
+      }
+
+      th {
+        font-size: 1.5rem;
+        background: black;
+        color: white;
+      }
+
+      td {
+        font-size: 1.2rem;
+      }
+
+      form {
+        text-align: center;
+        margin-top: 5rem;
+      }
+      h1 {
+        text-align: center;
+      }
+      button{
+        margin: 20px auto;
+        display: flex;
+
+      }
+    </style>
+  </head>
+  <body>
+    <h1>DATABASE</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>S. No.</th>
+          <th>Name</th>
+          <th>Marks</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Sameer</td>
+          <td>90</td>
+        </tr>
+
+        <tr>
+          <td>2</td>
+          <td>Rohan</td>
+          <td>100</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <form>
+        <label for="name">Name:</label>
+        <input type="text" id="name">      
+        <label for="marks">Marks:</label>
+        <input type="number" id="marks">
+        
+        
+    </form>
+    <button>Submit</button>
+    <script>
+      // Q Write a script which takes the entry from the form and add it into the table
+      //   Solution:
+        var submit = document.querySelector('button');
+        submit.addEventListener('click', function(){
+            let table = document.querySelector('tbody');
+            let lastSn = parseInt(table.lastElementChild.firstElementChild.innerText);
+            
+            let name = document.getElementById("name").value;
+            let marks = document.getElementById("marks").value;
+            let row = document.createElement('tr');
+            let tds = document.createElement('td');
+            tds.innerText = lastSn+1;
+            let tdn = document.createElement('td');
+            tdn.innerText = name;
+            let tdm = document.createElement('td');
+            tdm.innerText = marks;
+            row.appendChild(tds);
+            row.appendChild(tdn);
+            row.appendChild(tdm);
+            
+            table.appendChild(row);
+            document.querySelector('form').reset();
+            
+            
+        })
+    </script>
+  </body>
+</html>

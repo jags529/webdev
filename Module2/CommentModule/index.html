@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CommentModule</title>
+    <style>
+        h3{
+            color: red;
+        }
+        .comment-cont{
+            border-left: 3px solid;
+            padding-left: 2rem;
+        }
+        .posted-comment{
+            color: grey;
+        }
+        .reply-btn{
+            cursor: pointer;
+        }
+        .write-comment{
+            margin-left: 4rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="comment-cont">
+        <h2 class="posted-comment">Good Morning Everyone, How are you?</h2>
+        <h3 class="reply-btn">Reply</h3>
+
+        <!-- <div class="write-comment">
+            <input placeholder="Write your comment">
+            <input type="submit">
+        </div> -->
+    </div>
+    <script>
+        window.addEventListener('click', function(e){
+            if(e.target.classList.contains('reply-btn')){
+                let newInput = document.createElement('div');
+                newInput.classList.add('write-comment');
+                newInput.innerHTML = `
+                <input placeholder="Write your comment">
+                <input class='submit-btn' type="submit">`
+
+                let parent = e.target.parentElement;
+                // parent.append(newInput);
+                parent.insertBefore(newInput, parent.children[2]);
+                newInput.children[0].focus();
+
+                newInput.children[1].addEventListener('click', function(e){
+                    let comment = e.target.previousElementSibling.value;
+                    if(comment){
+                        
+                        let newComment = document.createElement('div');
+                        newComment.classList.add('comment-cont');
+                        newComment.style.margin= "10px 30px";
+                        newComment.innerHTML = `
+                        <h2 class="posted-comment">${comment}</h2>
+                        <h3 class="reply-btn">Reply</h3>`
+                        parent.insertBefore(newComment, parent.children[2]);    
+                    }
+                    newInput.remove();
+
+                })
+                newInput.children[0].addEventListener('keydown', function(e){
+                    if(e.key=='Enter'){
+                        let comment = e.target.value;
+                        if(comment){
+                            let newComment = document.createElement('div');
+                            newComment.classList.add('comment-cont');
+                            newComment.style.margin= "10px 30px";
+                            newComment.innerHTML = `
+                            <h2 class="posted-comment">${comment}</h2>
+                            <h3 class="reply-btn">Reply</h3>`
+                            parent.insertBefore(newComment, parent.children[2]);
+                        }
+                        newInput.remove();
+                    }
+                    
+                })
+            }
+            
+        })
+
+
+
+    </script>
+</body>
+</html>
